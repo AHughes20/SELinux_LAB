@@ -13,7 +13,8 @@ if [[ $scale == "easy" ]]; then
 	semanage port --deleteall
 	[ -d "/srv/web/html" ] || mkdir -pv "/srv/web/html"
 	echo "congrats, you fixed the error and completed the task!" > /srv/web/html/index.html
-	sed 's/DocumentRoot ".*"/DocumentRoot "\/srv\/web\/html"/' /etc/httpd/conf/httpd.conf
+	sed -i 's|DocumentRoot ".*"|DocumentRoot "/srv/web/html"|' /etc/httpd/conf/httpd.conf
+echo "Setup complete. The task is to correct the SELinux access to the web page and view message displayed. You have the directory at /srv/web/html that you would like to use to store your html files. There's also already an index.html in that directory that needs to be displayed. Fix the issue and access web page."
 
 elif [[ $scale == "normal" ]]; then
 	echo "normal mode in progress"
@@ -22,5 +23,3 @@ elif [[ $scale == "hard" ]]; then
 else
 	echo "bye"
 fi
-
-sed 's/DocumentRoot .*/DocumentRoot /srv/web/html/' /etc/httpd/conf/httpd.conf

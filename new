@@ -1,0 +1,3 @@
+DocumentRoot "/web"
+DocumentRoot: words after this
+DocumentRoot "/srv/web/html"
